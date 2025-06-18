@@ -68,7 +68,7 @@ export function NavMain() {
             href={item.url}
             className={cn(
               "rounded-none",
-              pathname === item.url
+              pathname === item.url || pathname.startsWith(item.url + '/')
                 ? "text-primary bg-primary/5"
                 : "text-muted-foreground"
             )}

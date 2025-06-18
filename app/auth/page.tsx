@@ -1,4 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react"
 import { Logo } from "@/components/layout/logo"
 import AuthForm from "@/components/auth/auth-form"
 import Image from "next/image"
