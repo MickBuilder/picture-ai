@@ -58,7 +58,7 @@ export async function POST(req: Request) {
         from: 'Picture AI <no-reply@wayzze.com>',
         to: [userEmail],
         subject: 'Model Training Completed',
-        react: EmailTemplate({ userName, message: "Your model training has been completed!" }),
+        react: await EmailTemplate({ userName, message: "Your model training has been completed!" }),
       });
 
       // Update the supabase models table
@@ -73,7 +73,7 @@ export async function POST(req: Request) {
         from: 'Picture AI <no-reply@wayzze.com>',
         to: [userEmail],
         subject: `Model Training ${body.status}`,
-        react: EmailTemplate({ userName, message: `Your model training has been ${body.status}!` }),
+        react: await EmailTemplate({ userName, message: `Your model training has been ${body.status}!` }),
       });
 
       // Update the supabase models table

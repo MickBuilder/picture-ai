@@ -2,7 +2,7 @@ import { toDateTime } from '@/lib/helpers';
 import { stripe } from '@/lib/stripe/config';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
-import type { Json, Tables, TablesInsert } from '@/database.types';
+import type { Database, Json, Tables, TablesInsert } from '@/database.types';
 
 type Product = Tables<'products'>;
 type Price = Tables<'prices'>;
@@ -41,6 +41,7 @@ const upsertPriceRecord = async (
 ) => {
   const priceData: Price = {
     id: price.id,
+    description: price.nickname ?? null,
     product_id: typeof price.product === 'string' ? price.product : '',
     active: price.active,
     currency: price.currency,
@@ -233,7 +234,7 @@ const manageSubscriptionStatusChange = async (
     id: subscription.id,
     user_id: uuid,
     metadata: subscription.metadata,
-    status: subscription.status,
+    status: subscription.status as Database['public']['Enums']['subscription_status'],
     price_id: subscription.items.data[0].price.id,
     //TODO check quantity on subscription
     // @ts-expect-error subscription.quantity is not defined in the database.types.ts file

@@ -112,7 +112,7 @@ const MarqueeColumn = ({
         className
       )}
       style={{
-        "--duration": duration,
+        ["--duration" as string]: duration,
       }}
     >
       {Images.sort(() => Math.random() - 0.5).map((image, index) => {
