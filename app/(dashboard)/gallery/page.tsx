@@ -1,5 +1,5 @@
 import { getImages } from "@/lib/actions/image";
-import GalleryComponent from "@/components/gallery/GalleryComponent";
+import GalleryComponent from "@/components/gallery/gallery-component";
 import React from "react";
 
 const Gallery = async () => {

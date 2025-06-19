@@ -2,11 +2,11 @@
 import { Tables } from "@/database.types";
 import Image from "next/image";
 import React, { useState } from "react";
-import ImageDialog from "./ImageDialog";
+import ImageDialog from "./image-dialog";
 
 type ImageProps = {
   url: string | undefined;
-} & Tables<"generated_images">;
+} & Tables<"generated-images">;
 
 interface GalleryProps {
   images: ImageProps[];

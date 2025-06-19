@@ -1,6 +1,6 @@
 import { fetchModels } from '@/lib/actions/model'
-import Configurations from '@/components/image-generation/Configurations'
-import GeneratedImages from '@/components/image-generation/GeneratedImages'
+import Configurations from '@/components/image-generation/configurations'
+import GeneratedImages from '@/components/image-generation/generated-images'
 import React from 'react'
 
 export const maxDuration = 30;

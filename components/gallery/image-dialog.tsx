@@ -11,10 +11,10 @@ import { Button } from "../ui/button";
 import { Download } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import DeleteImage from "./DeleteImage";
+import DeleteImage from "./delete-image";
 
 interface ImageDialogProps {
-  image: { url: string | undefined } & Tables<"generated_images">;
+  image: { url: string | undefined } & Tables<"generated-images">;
   onClose: () => void;
 }
 

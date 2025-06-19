@@ -1,5 +1,5 @@
 import { fetchModels } from '@/lib/actions/model'
-import ModelsList from '@/components/models/ModelsList'
+import ModelsList from '@/components/models/models-list'
 import React from 'react'
 
 const Models = async () => {

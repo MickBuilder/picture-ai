@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { ImageGenerationFormSchema } from "@/components/image-generation/Configurations";
+import { ImageGenerationFormSchema } from "@/components/image-generation/configurations";
 import { z } from "zod";
 import { generateImageAction, storeImages } from "@/lib/actions/image";
 import { toast } from "sonner";

@@ -1,4 +1,4 @@
-import ModelTrainingForm from "@/components/models/ModelTrainingForm";
+import ModelTrainingForm from "@/components/models/model-training-form";
 import React from "react";
 
 const ModelTraining = () => {

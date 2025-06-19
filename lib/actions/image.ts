@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use server'
 import { z } from "zod"
-import { ImageGenerationFormSchema } from "@/components/image-generation/Configurations";
+import { ImageGenerationFormSchema } from "@/components/image-generation/configurations";
 import Replicate from "replicate";
 import { createClient } from "@/lib/supabase/server";
 import { Database } from '@/database.types';
