@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
 import useGeneratedStore from "@/hooks/useGeneratedStore";
-// import { Tables } from '@/types/database.types'
+import { Tables } from '@/database.types'
 
 export const ImageGenerationFormSchema = z.object({
   model: z.string({ required_error: "Model is required!", }),
@@ -96,6 +96,7 @@ const Configurations = ({ userModels, model_id }: ConfigurationsProps) => {
   }, [form]);
 
   async function onSubmit(values: z.infer<typeof ImageGenerationFormSchema>) {
+
     const newValues = {
       ...values,
       prompt: values.model.startsWith(

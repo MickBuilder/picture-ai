@@ -9,22 +9,7 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      customers: {
-        Row: {
-          id: string
-          stripe_customer_id: string | null
-        }
-        Insert: {
-          id: string
-          stripe_customer_id?: string | null
-        }
-        Update: {
-          id?: string
-          stripe_customer_id?: string | null
-        }
-        Relationships: []
-      }
-      generated_images: {
+      "generated-images": {
         Row: {
           aspect_ratio: string | null
           created_at: string
@@ -44,7 +29,7 @@ export type Database = {
           created_at?: string
           guidance?: number | null
           height?: number | null
-          id?: never
+          id?: number
           image_name?: string | null
           model?: string | null
           num_inference_steps?: number | null
@@ -58,7 +43,7 @@ export type Database = {
           created_at?: string
           guidance?: number | null
           height?: number | null
-          id?: never
+          id?: number
           image_name?: string | null
           model?: string | null
           num_inference_steps?: number | null
@@ -69,163 +54,52 @@ export type Database = {
         }
         Relationships: []
       }
-      prices: {
+      models: {
         Row: {
-          active: boolean | null
-          currency: string | null
-          description: string | null
-          id: string
-          interval: Database["public"]["Enums"]["pricing_plan_interval"] | null
-          interval_count: number | null
-          metadata: Json | null
-          product_id: string | null
-          trial_period_days: number | null
-          type: Database["public"]["Enums"]["pricing_type"] | null
-          unit_amount: number | null
+          created_at: string
+          gender: Database["public"]["Enums"]["gender"] | null
+          id: number
+          model_id: string | null
+          model_name: string | null
+          training_id: string | null
+          training_status: Database["public"]["Enums"]["training_status"] | null
+          training_steps: number | null
+          training_time: string | null
+          trigger_word: string | null
+          user_id: string | null
+          version: string | null
         }
         Insert: {
-          active?: boolean | null
-          currency?: string | null
-          description?: string | null
-          id: string
-          interval?: Database["public"]["Enums"]["pricing_plan_interval"] | null
-          interval_count?: number | null
-          metadata?: Json | null
-          product_id?: string | null
-          trial_period_days?: number | null
-          type?: Database["public"]["Enums"]["pricing_type"] | null
-          unit_amount?: number | null
+          created_at?: string
+          gender?: Database["public"]["Enums"]["gender"] | null
+          id?: never
+          model_id?: string | null
+          model_name?: string | null
+          training_id?: string | null
+          training_status?:
+            | Database["public"]["Enums"]["training_status"]
+            | null
+          training_steps?: number | null
+          training_time?: string | null
+          trigger_word?: string | null
+          user_id?: string | null
+          version?: string | null
         }
         Update: {
-          active?: boolean | null
-          currency?: string | null
-          description?: string | null
-          id?: string
-          interval?: Database["public"]["Enums"]["pricing_plan_interval"] | null
-          interval_count?: number | null
-          metadata?: Json | null
-          product_id?: string | null
-          trial_period_days?: number | null
-          type?: Database["public"]["Enums"]["pricing_type"] | null
-          unit_amount?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "prices_product_id_fkey"
-            columns: ["product_id"]
-            isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      products: {
-        Row: {
-          active: boolean | null
-          description: string | null
-          id: string
-          image: string | null
-          metadata: Json | null
-          name: string | null
-        }
-        Insert: {
-          active?: boolean | null
-          description?: string | null
-          id: string
-          image?: string | null
-          metadata?: Json | null
-          name?: string | null
-        }
-        Update: {
-          active?: boolean | null
-          description?: string | null
-          id?: string
-          image?: string | null
-          metadata?: Json | null
-          name?: string | null
-        }
-        Relationships: []
-      }
-      subscriptions: {
-        Row: {
-          cancel_at: string | null
-          cancel_at_period_end: boolean | null
-          canceled_at: string | null
-          created: string
-          current_period_end: string
-          current_period_start: string
-          ended_at: string | null
-          id: string
-          metadata: Json | null
-          price_id: string | null
-          quantity: number | null
-          status: Database["public"]["Enums"]["subscription_status"] | null
-          trial_end: string | null
-          trial_start: string | null
-          user_id: string
-        }
-        Insert: {
-          cancel_at?: string | null
-          cancel_at_period_end?: boolean | null
-          canceled_at?: string | null
-          created?: string
-          current_period_end?: string
-          current_period_start?: string
-          ended_at?: string | null
-          id: string
-          metadata?: Json | null
-          price_id?: string | null
-          quantity?: number | null
-          status?: Database["public"]["Enums"]["subscription_status"] | null
-          trial_end?: string | null
-          trial_start?: string | null
-          user_id: string
-        }
-        Update: {
-          cancel_at?: string | null
-          cancel_at_period_end?: boolean | null
-          canceled_at?: string | null
-          created?: string
-          current_period_end?: string
-          current_period_start?: string
-          ended_at?: string | null
-          id?: string
-          metadata?: Json | null
-          price_id?: string | null
-          quantity?: number | null
-          status?: Database["public"]["Enums"]["subscription_status"] | null
-          trial_end?: string | null
-          trial_start?: string | null
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "subscriptions_price_id_fkey"
-            columns: ["price_id"]
-            isOneToOne: false
-            referencedRelation: "prices"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      users: {
-        Row: {
-          billing_address: Json | null
-          full_name: string | null
-          id: string
-          payment_method: Json | null
-        }
-        Insert: {
-          billing_address?: Json | null
-          full_name?: string | null
-          id: string
-          payment_method?: Json | null
-        }
-        Update: {
-          billing_address?: Json | null
-          full_name?: string | null
-          id?: string
-          payment_method?: Json | null
+          created_at?: string
+          gender?: Database["public"]["Enums"]["gender"] | null
+          id?: never
+          model_id?: string | null
+          model_name?: string | null
+          training_id?: string | null
+          training_status?:
+            | Database["public"]["Enums"]["training_status"]
+            | null
+          training_steps?: number | null
+          training_time?: string | null
+          trigger_word?: string | null
+          user_id?: string | null
+          version?: string | null
         }
         Relationships: []
       }
@@ -237,16 +111,13 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      pricing_plan_interval: "day" | "week" | "month" | "year"
-      pricing_type: "one_time" | "recurring"
-      subscription_status:
-        | "trialing"
-        | "active"
+      gender: "man" | "women"
+      training_status:
+        | "starting"
+        | "processing"
+        | "succeeded"
+        | "failed"
         | "canceled"
-        | "incomplete"
-        | "incomplete_expired"
-        | "past_due"
-        | "unpaid"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -362,16 +233,13 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      pricing_plan_interval: ["day", "week", "month", "year"],
-      pricing_type: ["one_time", "recurring"],
-      subscription_status: [
-        "trialing",
-        "active",
+      gender: ["man", "women"],
+      training_status: [
+        "starting",
+        "processing",
+        "succeeded",
+        "failed",
         "canceled",
-        "incomplete",
-        "incomplete_expired",
-        "past_due",
-        "unpaid",
       ],
     },
   },

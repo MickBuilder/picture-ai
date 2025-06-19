@@ -89,7 +89,7 @@ export async function imgUrlToBlob(url: string) {
     return (await blob).arrayBuffer();
 }
 
-type storeImageInput = { url: string } & Database["public"]["Tables"]["generated_images"]["Insert"]
+type storeImageInput = { url: string } & Database["public"]["Tables"]["generated-images"]["Insert"]
 
 
 export async function storeImages(data: storeImageInput[]) {
@@ -191,7 +191,7 @@ export async function getImages(limit?: number) {
     }
 
     const imageWithUrls = await Promise.all(
-        data.map(async (image: Database["public"]["Tables"]["generated_images"]["Row"]) => {
+        data.map(async (image: Database["public"]["Tables"]["generated-images"]["Row"]) => {
             const { data } = await supabase.storage
                 .from('generated-images')
                 .createSignedUrl(`${user.id}/${image.image_name}`, 3600)
