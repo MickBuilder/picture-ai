@@ -1,14 +1,14 @@
-// import { toDateTime } from '@/lib/helpers';
-// import { stripe } from '@/lib/stripe/config';
+import { toDateTime } from '@/lib/helpers';
+import { stripe } from '@/lib/stripe/config';
 import { createClient } from '@supabase/supabase-js';
-// import Stripe from 'stripe';
-// import type { Json, Tables, TablesInsert } from '@/database.types';
+import Stripe from 'stripe';
+import type { Json, Tables, TablesInsert } from '@/database.types';
 
-// type Product = Tables<'products'>;
-// type Price = Tables<'prices'>;
+type Product = Tables<'products'>;
+type Price = Tables<'prices'>;
 
 // Change to control trial period length
-// const TRIAL_PERIOD_DAYS = 0;
+const TRIAL_PERIOD_DAYS = 0;
 
 
 export const supabaseAdmin = createClient(
@@ -16,7 +16,7 @@ export const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY || ""
 )
 
-/*const upsertProductRecord = async (product: Stripe.Product) => {
+const upsertProductRecord = async (product: Stripe.Product) => {
   const productData: Product = {
     id: product.id,
     active: product.active,
@@ -183,12 +183,12 @@ const createOrRetrieveCustomer = async ({
 
     return upsertedStripeCustomer;
   }
-};*/
+};
 
 /**
  * Copies the billing details from the payment method to the customer object.
  */
-/*const copyBillingDetailsToCustomer = async (
+const copyBillingDetailsToCustomer = async (
   uuid: string,
   payment_method: Stripe.PaymentMethod
 ) => {
@@ -245,12 +245,8 @@ const manageSubscriptionStatusChange = async (
     canceled_at: subscription.canceled_at
       ? toDateTime(subscription.canceled_at).toISOString()
       : null,
-    current_period_start: toDateTime(
-      subscription.current_period_start
-    ).toISOString(),
-    current_period_end: toDateTime(
-      subscription.current_period_end
-    ).toISOString(),
+    current_period_start: toDateTime(subscription.items.data[0].current_period_start).toISOString(),
+    current_period_end: toDateTime(subscription.items.data[0].current_period_end).toISOString(),
     created: toDateTime(subscription.created).toISOString(),
     ended_at: subscription.ended_at
       ? toDateTime(subscription.ended_at).toISOString()
@@ -306,4 +302,4 @@ export {
   deletePriceRecord,
   createOrRetrieveCustomer,
   manageSubscriptionStatusChange
-};*/
+};
